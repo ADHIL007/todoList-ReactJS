@@ -60,6 +60,7 @@ function Input({options}:any) {
             value={task}
             onChange={handleTaskChange}
             required
+            maxLength={60}
           />
           <div className="due-date">
         {options === "Today" ? <> <p>Time</p>

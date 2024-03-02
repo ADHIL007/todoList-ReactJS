@@ -1,7 +1,8 @@
-
 import React, { useState } from "react";
 import useLocalStorage from "use-local-storage";
-
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import DoneAllOutlinedIcon from "@mui/icons-material/DoneAllOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 interface TaskProps {
   id: number;
   task: string;
@@ -10,14 +11,29 @@ interface TaskProps {
   isCollapsed: boolean;
   time?: string;
   options: string;
+  completedTime: string;
+  completedDate: string;
 }
 
-function Task({ task, due, isCompleted, isCollapsed, id, time, options }: TaskProps) {
+function Task({
+  task,
+  due,
+  isCompleted,
+  isCollapsed,
+  id,
+  time,
+  options,
+  completedDate,
+  completedTime,
+}: TaskProps) {
   const [edtStatus, setEdtStatus] = useState(false);
   const [updatedTask, setUpdatedTask] = useState(task);
   const [updatedDueDate, setUpdatedDueDate] = useState(due);
   const [updatedDueTime, setUpdatedDueTime] = useState(time);
-  const [storedTasks, setStoredTasks] = useLocalStorage<TaskProps[]>("tasks", []);
+  const [storedTasks, setStoredTasks] = useLocalStorage<TaskProps[]>(
+    "tasks",
+    []
+  );
 
   const handleTaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUpdatedTask(e.target.value);
@@ -32,28 +48,34 @@ function Task({ task, due, isCompleted, isCollapsed, id, time, options }: TaskPr
   };
 
   const handleCompleteTask = () => {
-    console.log('clicked')
+    console.log("clicked");
+    const date = new Date().toISOString().split("T")[0];
+    const time = new Date().toLocaleTimeString();
     const updatedTasks = storedTasks.map((t) =>
-      t.id === id ? { ...t, completed: true } : t
+      t.id === id
+        ? { ...t, completed: true, completedTime: time, completedDate: date }
+        : t
     );
-    console.log(updatedTasks.filter((t) => t.id === id ))
+    console.log(updatedTasks.filter((t) => t.id === id));
     setStoredTasks(updatedTasks);
   };
 
   const handleEditTask = () => {
     setEdtStatus(!edtStatus);
-
   };
 
+
   const handleUpdateTask = () => {
-    console.log('clicked');
-    if (updatedTask.trim() === '') {
-      alert('Task cannot be empty');
+    console.log("clicked");
+    if (updatedTask.trim() === "") {
+      alert("Task cannot be empty");
       return;
     }
 
     const updatedTasks = storedTasks.map((t) =>
-      t.id === id ? { ...t, task: updatedTask, due: updatedDueDate, time: updatedDueTime } : t
+      t.id === id
+        ? { ...t, task: updatedTask, due: updatedDueDate, time: updatedDueTime }
+        : t
     );
     console.log(updatedTasks);
     setStoredTasks(updatedTasks);
@@ -68,13 +90,14 @@ function Task({ task, due, isCompleted, isCollapsed, id, time, options }: TaskPr
   return (
     <>
       {edtStatus ? (
-        <>
+        <div className="input-container">
           <input
             type="text"
             placeholder="Edit task"
             className="task-input"
             value={updatedTask}
             onChange={handleTaskChange}
+            maxLength={55}
           />
           <div className="due-date">
             {options === "Today" ? (
@@ -105,20 +128,41 @@ function Task({ task, due, isCompleted, isCollapsed, id, time, options }: TaskPr
               </>
             )}
           </div>
-          <button className="add-button" onClick={handleUpdateTask}>
-            Update
-          </button>
-        </>
+        <div><button className="update-button" onClick={handleUpdateTask}>
+            Update </button>
+            <button
+                         className={`update-button  cancel-button ${edtStatus ? 'active' : ''}`}
+                        style={edtStatus ? { backgroundColor: "red" } : {}}
+                        onClick={handleEditTask}
+                                           >
+
+            cancel
+          </button></div>
+        </div>
       ) : (
         <div className={isCollapsed ? "task collapsed-task" : "task"}>
           <h2>{task}</h2>
-          <p>
-            Due: {due} {time && `at ${time}`}
-          </p>
+          {options === "Completed" ? (
+            <>
+              <p style={{ textDecoration: "line-through" ,fontStyle:"italic"}}>
+                Due: {due} {time && `at ${time}`}
+              </p>
+              <p style={{color:"rgba(50, 255, 126,1.0)",fontWeight:"bold"}} >
+                Completed on {completedDate} {completedTime}
+              </p>
+            </>
+          ) : (
+            <p>
+              Due: {due} {time && `at ${time}`}
+            </p>
+          )}
+
           <p
             style={{
-              color: isCompleted ? "rgba(50, 255, 126,1.0)" : "rgba(255, 56, 56,1.0)",
-              fontWeight:"bold"
+              color: isCompleted
+                ? "rgba(50, 255, 126,1.0)"
+                : "rgba(255, 56, 56,1.0)",
+              fontWeight: "bold",
             }}
           >
             Status: {isCompleted ? "Completed" : "Incomplete"}
@@ -127,15 +171,15 @@ function Task({ task, due, isCompleted, isCollapsed, id, time, options }: TaskPr
             {!isCompleted && (
               <>
                 <button onClick={handleCompleteTask}>
-                  <span className="icon"> &#10004; </span>
+                  <DoneAllOutlinedIcon color="success" />
                 </button>
                 <button onClick={handleEditTask}>
-                  <span className="icon"> &#9998;</span>
+                  <EditOutlinedIcon color="primary" />
                 </button>
               </>
             )}
             <button onClick={handleDeleteTask}>
-              <span className="icon"> &#10007;</span>
+              <DeleteOutlineOutlinedIcon color="error" />
             </button>
           </div>
         </div>

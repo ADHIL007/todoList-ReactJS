@@ -76,6 +76,10 @@ html, body {
 .sidebar-option {
   border-radius: 10px;
   transition: background-color 0.1s ease;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sidebar-option:hover {
@@ -124,8 +128,9 @@ html, body {
 .task {
   position: relative;
   padding: 10px;
-  width: 60%;
+  width: 90%;
   border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 .task h2 {
@@ -202,7 +207,7 @@ html, body {
     position: relative;
     padding: 10px;
     height: 10%;
-    width: 65%;
+    width: 95%;
     margin-bottom: 20px;
   }
 }
@@ -210,7 +215,7 @@ html, body {
 .input-container {
   position: relative;
   padding: 20px;
-  width: 60%;
+  width: 90%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -235,7 +240,7 @@ html, body {
 .add-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: rgba(24, 220, 255,1.0);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -244,9 +249,25 @@ html, body {
 }
 
 .add-button:hover {
-  background-color: #0056b3;
+  background-color: rgba(23, 192, 235,1.0);
 }
 
+.update-button{
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgba(24, 220, 255,1.0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.update-button:hover {
+  background-color: rgba(23, 192, 235,1.0);
+}
+.cancel-button:hover {
+  background-color: rgba(23, 192, 235,1.0);
+}
 .date-input {
   padding: 10px;
   border-radius: 5px;
@@ -268,4 +289,22 @@ html, body {
   font-size: 16px;
   margin-left: 10px;
   padding: 10px;
+}
+.task-view-title{
+  font-size: 3rem;
+  color: #1f2937;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+}
+.item{
+  display : flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+}
+.item h2{
+  font-size: 3rem;
 }
