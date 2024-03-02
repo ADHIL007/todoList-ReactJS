@@ -256,6 +256,9 @@ html, body {
   font-size: x-large;
   color: #1f2937;
   font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s;
+
 }
 
 .time-input {

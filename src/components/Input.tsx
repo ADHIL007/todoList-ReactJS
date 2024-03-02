@@ -9,7 +9,7 @@ interface Task {
   completed: boolean;
 }
 
-function Input() {
+function Input({options}:any) {
   const [clicked, setClicked] = useState(false);
   const [task, setTask] = useState("");
   const [dueDate, setDueDate] = useState(new Date().toISOString().split("T")[0]);
@@ -29,6 +29,10 @@ function Input() {
   };
 
   const handleAddTask = () => {
+    if (task.trim() === '') {
+      alert('Task cannot be empty');
+      return;
+    }
     const newTask: Task = {
       id: Math.floor(Math.random() * 1000),
       task: task,
@@ -55,9 +59,16 @@ function Input() {
             className="task-input"
             value={task}
             onChange={handleTaskChange}
+            required
           />
           <div className="due-date">
-            <p>Due date and Time</p>
+        {options === "Today" ? <> <p>Time</p>
+            <input
+              type="time"
+              value={time}
+              onChange={handleTimeChange}
+              className="time-input"
+            /></> :<> <p>Due date and Time</p>
             <input
               type="date"
               value={dueDate}
@@ -69,7 +80,7 @@ function Input() {
               value={time}
               onChange={handleTimeChange}
               className="time-input"
-            />
+            /></>}
           </div>
           <button className="add-button" onClick={handleAddTask}>
             Add {'\u002B'}

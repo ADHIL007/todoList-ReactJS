@@ -14,7 +14,9 @@ function SideBar({ handleOptionChange, options, handleCollapseToggle, collapsed 
           <ul className="sidebar-options">
             <li className={options === 'Today' ? "sidebar-option active" : "sidebar-option "} onClick={() => handleOptionChange('Today')}>Today</li>
             <li className={options === 'Next' ? "sidebar-option active" : "sidebar-option"} onClick={() => handleOptionChange('Next')}>Next 7 Days</li>
+            <li className={options === 'others' ? "sidebar-option active" : "sidebar-option"} onClick={() => handleOptionChange('others')}>Other Tasks</li>
             <li className={options === 'Completed' ? "sidebar-option active" : "sidebar-option"} onClick={() => handleOptionChange('Completed')}>Completed Tasks</li>
+            <li className={options === 'inCompleted' ? "sidebar-option active" : "sidebar-option"} onClick={() => handleOptionChange('inCompleted')}>Overdue tasks</li>
           </ul>
         )}
       </div>

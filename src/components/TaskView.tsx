@@ -26,8 +26,17 @@ function TaskView({ options, isCollapsed }: any) {
     } else if (options === "Completed") {
       const completedTasks = storedTasks.filter((task: any) => task.completed);
       setTasks(completedTasks);
-    } else {
-      setTasks([]);
+    } else if (options === "Others") {
+      const otherTasks = storedTasks.filter(
+        (task: any) =>
+          new Date(task.dueDate) > new Date(next7Days) && !task.completed
+      );
+      setTasks(otherTasks);
+    } else if (options === "Incomplete") {
+      const overdueTasks = storedTasks.filter(
+        (task: any) => new Date(task.dueDate) < new Date(today) && !task.completed
+      );
+      setTasks(overdueTasks);
     }
   }, [options, storedTasks]);
 
@@ -38,19 +47,28 @@ function TaskView({ options, isCollapsed }: any) {
           ? "Today"
           : options === "Next"
           ? "Next 7 Days"
-          : "Completed Tasks"}
+          : options === "Completed"
+          ? "Completed Tasks"
+          : options === "others"
+          ? "Other Tasks"
+          : "Overdue tasks"}
       </h1>
       <div className="task-container">
         {tasks.map((task: any) => (
           <Task
+            isCollapsed={isCollapsed}
             key={task.id}
+            id={task.id}
             task={task.task}
-            due={task.dueDate}
+            due={options === "Today" ? "Today" : task.dueDate}
             isCompleted={task.completed}
             time={task.time}
+            options ={options}
           />
         ))}
-        {(options === "Today" || options === "Next") && <Input />}
+        {(options === "Today" ||
+          options === "Next" ||
+          options === "others") && <Input options={options} />}
       </div>
     </div>
   );
