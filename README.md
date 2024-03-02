@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+const README = `
+# Todo List App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This Todo List app helps you organize your tasks efficiently. You can add, edit, delete, and mark tasks as completed. The app offers various viewing options, including tasks for today, tasks for the next 7 days, completed tasks, overdue tasks, and other tasks.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+To run the Todo List app locally, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the repository to your local machine:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   \`\`\`bash
+   git clone https://github.com/your-username/todo-list-app.git
+   \`\`\`
 
-### `npm test`
+2. Navigate to the project directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   \`\`\`bash
+   cd todo-list-app
+   \`\`\`
 
-### `npm run build`
+3. Install the dependencies using npm:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After completing the installation, you can start the app by running:
 
-### `npm run eject`
+\`\`\`bash
+npm start
+\`\`\`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This command will launch the app in your default web browser. You can then interact with the Todo List app to manage your tasks.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Add Task**: Add new tasks to your list with a title, due date, and optional time.
+- **Edit Task**: Edit existing tasks to update their title, due date, or time.
+- **Delete Task**: Remove tasks from your list that are no longer needed.
+- **Mark as Completed**: Mark tasks as completed when you finish them.
+- **View Options**: Choose from various viewing options such as today's tasks, tasks for the next 7 days, completed tasks, overdue tasks, and other tasks.
+- **Collapse Sidebar**: Collapse the sidebar for a cleaner interface.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Technologies Used
 
-## Learn More
+- React.js
+- Material-UI
+- use-local-storage (for local storage management)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! If you find any bugs or have suggestions for new features, please open an issue on GitHub or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+`;
+
+console.log(README);
