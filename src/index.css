@@ -1,0 +1,268 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Quicksand, sans-serif;
+  background-color:  rgba(241, 242, 246,1.0);
+  scroll-behavior: smooth;
+  height: 100%;
+
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+}
+
+.sidebar-container {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.task-view {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  padding: 50px 10px 10px 350px;
+  transition: padding 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar {
+  overflow: hidden;
+  flex-direction: column;
+  width: 250px;
+  height: 100%;
+  background-color: #c7ecee;
+  border-right: 1px solid #ddd;
+  padding: 50px 20px 20px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s;
+}
+
+
+.sidebar-header {
+  font-size: 20px;
+  margin-bottom: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #182c61;
+  font-weight: 700;
+}
+
+.sidebar-options {
+  list-style-type: none;
+  padding: 0;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.collapse-btn, .sidebar-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar-option {
+  border-radius: 10px;
+  transition: background-color 0.1s ease;
+}
+
+.sidebar-option:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.sidebar-option.active {
+  background-color: #22a6b3;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.collapsed {
+  width: 40px;
+}
+
+.input-container, .task {
+  position: relative;
+  height: 10%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.collapsed-taskview {
+  padding: 50px 10px 10px 110px;
+}
+
+.task-view-title {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.task {
+  position: relative;
+  padding: 10px;
+  width: 60%;
+  border-radius: 10px;
+}
+
+.task h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.task p {
+  font-size: 1rem;
+  margin: 0;
+  color: #555;
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.task-buttons button {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s;
+  width: 10%;
+  height: 10%;
+}
+
+.icon {
+  font-size: large;
+}
+
+.task-buttons button:hover {
+  color: #007bff;
+}
+
+@media screen and (max-width: 600px) {
+  .collapsed {
+    transform: translateX(-350px);
+  }
+
+  .sidebar-header {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hidden {
+    display: block;
+  }
+
+  .sidebar {
+    width: 80%;
+    transition: 0.3s;
+    padding-top: 50px;
+  }
+
+  .collapsed .task-view {
+    width: 100%;
+  }
+
+  .collapsed-taskview, .task-view {
+    padding: 50px 10px 10px;
+  }
+
+  .task {
+    position: relative;
+    padding: 10px;
+    height: 10%;
+    width: 65%;
+    margin-bottom: 20px;
+  }
+}
+
+.input-container {
+  position: relative;
+  padding: 20px;
+  width: 60%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s;
+}
+
+.date-input, .task-input {
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.task-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  outline: 0;
+  width: 90%;
+}
+
+.add-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+.date-input {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.add-task-icon {
+  font-size: x-large;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.time-input {
+  width: 110px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 10px;
+}
