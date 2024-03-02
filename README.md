@@ -1,4 +1,3 @@
-const README = `
 # Todo List App
 
 ## Description
@@ -11,29 +10,29 @@ To run the Todo List app locally, follow these steps:
 
 1. Clone the repository to your local machine:
 
-   \`\`\`bash
-   git clone https://github.com/your-username/todo-list-app.git
-   \`\`\`
+   ```bash
+   git clone https://github.com/ADHIL007/todoList-ReactJS.git
+   ```
 
 2. Navigate to the project directory:
 
-   \`\`\`bash
+   ```bash
    cd todo-list-app
-   \`\`\`
+   ```
 
 3. Install the dependencies using npm:
 
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 ## Usage
 
 After completing the installation, you can start the app by running:
 
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 This command will launch the app in your default web browser. You can then interact with the Todo List app to manage your tasks.
 
@@ -59,6 +58,3 @@ Contributions are welcome! If you find any bugs or have suggestions for new feat
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-`;
-
-console.log(README);
